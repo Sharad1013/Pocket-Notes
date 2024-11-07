@@ -1,0 +1,16 @@
+/* Main content layout */
+.notes-app {
+    display: flex;
+    width: 25%;
+  }
+  
+  .main-content {
+    flex-grow: 1;
+    padding: 40px; /* Adjust for spacing */
+    background-color: #e9f0fa; /* Set a background color to separate from sidebar */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  

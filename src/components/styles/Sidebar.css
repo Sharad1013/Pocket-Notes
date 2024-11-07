@@ -1,0 +1,61 @@
+.sidebar {
+  width: 100%;
+  background-color: #ffffff;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* Align items at the top */
+  position: relative;
+  text-align: center;
+  color: #000;
+  height: 100vh; /* Full height of the viewport */
+  overflow-y: auto; /* Enables scrolling */
+}
+
+.sidebar h1 {
+  margin: 10px;
+}
+
+.add-button {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  background-color: #16008b;
+  color: #ffffff;
+  font-size: 45px;
+  border: none;
+  cursor: pointer;
+  position: fixed;
+  bottom: 20px;
+  left: 310px;
+  text-align: center;
+  transition: background-color 0.3s, box-shadow 0.2s;
+}
+
+.add-button:hover {
+  background-color: #0d0066; /* Slightly darker shade */
+  box-shadow: 0 8px 10px rgba(0, 0, 0, 0.3); /* Adds shadow */
+}
+
+.empty-group {
+  color: gray;
+}
+
+.groups-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 2rem;
+}
+
+.single-group {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  margin-bottom: 1rem;
+}
+
+/* .single-group:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+} */

@@ -1,0 +1,32 @@
+.group-outlet {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  margin: 5px 0;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.2s;
+  gap: 2rem;
+}
+
+.group-outlet:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.group-logo {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  margin-right: 10px;
+  padding: 25px;
+}
+
+.group-name {
+  font-size: 1.25rem;
+  /* font-size: 16px; */
+}
