@@ -51,8 +51,6 @@ const AddGroup = ({ onClose }) => {
         chooseColor("");
         onClose();
       }
-      // alert("Group created:", groupName, color);
-      // console.log(arr);
     }
   };
 
