@@ -1,19 +1,41 @@
 .sidebar {
-  width: 100%;
   background-color: #ffffff;
   padding: 20px;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start; /* Align items at the top */
-  position: relative;
+  justify-content: flex-start;
+  position: fixed;
   text-align: center;
   color: #000;
-  height: 100vh; /* Full height of the viewport */
-  overflow-y: auto; /* Enables scrolling */
+  height: 100%;
+  overflow: hidden;
 }
 
 .sidebar h1 {
   margin: 10px;
+}
+
+.empty-group {
+  color: gray;
+}
+
+.groups-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 2rem;
+  overflow-y: auto;
+  flex-grow: 1; 
+  max-height: calc(100vh - 150px);
+  padding-bottom: 70px; /* Prevents overlapping with the button */
+}
+
+.single-group {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 1rem;
 }
 
 .add-button {
@@ -27,35 +49,78 @@
   cursor: pointer;
   position: fixed;
   bottom: 20px;
-  left: 310px;
+  left: 20px;
   text-align: center;
   transition: background-color 0.3s, box-shadow 0.2s;
 }
 
 .add-button:hover {
-  background-color: #0d0066; /* Slightly darker shade */
-  box-shadow: 0 8px 10px rgba(0, 0, 0, 0.3); /* Adds shadow */
+  background-color: #0d0066;
+  box-shadow: 0 8px 10px rgba(0, 0, 0, 0.3);
 }
 
-.empty-group {
-  color: gray;
-}
+/* Responsive */
 
-.groups-list {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  margin-top: 2rem;
-}
+/* Large screen (monitor) view */
+@media (min-width: 1440px) {
+  .add-button {
+    width: 60px;
+    height: 60px;
+    font-size: 50px;
+    left: 280px;
+  }
 
-.single-group {
-  display: flex;
-  flex-direction: column;
-  width: 80%;
-  margin-bottom: 1rem;
+  .single-group {
+    width: 300px;
+  }
 }
+/* laptop view */
+@media (min-width: 1024px) and (max-width: 1439px) {
+  .add-button {
+    width: 60px;
+    height: 60px;
+    font-size: 50px;
+    left: 230px;
+  }
+  .single-group {
+    width: 300px;
+    padding: 0 1rem;
+  }
+}
+/* Tablet View */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .sidebar {
+    width: 100vw;
+  }
+  .add-button {
+    width: 60px;
+    height: 60px;
+    font-size: 50px;
+    left: 650px;
+  }
+}
+/* Mobile View */
+@media (max-width: 767px) {
+  .sidebar {
+    width: 100vw;
+    left: 0;
+    top: 0;
+    max-height: 100vh;
+    overflow: hidden;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+  .groups-list {
+    flex-grow: 1;
+    max-height: calc(100vh - 90px);
+    overflow-y: auto;
+  }
 
-/* .single-group:hover {
-  background-color: rgba(0, 0, 0, 0.1);
-} */
+  .add-button {
+    position: sticky;
+    left: 80%;
+    align-self: center;
+    margin-top: auto;
+  }
+}

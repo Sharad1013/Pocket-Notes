@@ -1,11 +1,12 @@
-// GroupOutlet.jsx
 import React from "react";
-import "./styles/GroupOutlet.css"; // Assuming you have some styling for this component
+import "./styles/GroupOutlet.css";
 
 const GroupOutlet = ({ name, color }) => {
   // Create initials from the group name
+
   const initials = name
     .split(" ")
+    .filter((_, index, arr) => index === 0 || index === arr.length - 1) 
     .map((word) => word[0])
     .join("")
     .toUpperCase();

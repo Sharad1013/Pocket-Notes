@@ -5,31 +5,40 @@ const GroupContext = createContext();
 export const useGroup = () => useContext(GroupContext);
 
 export const GroupProvider = ({ children }) => {
-  //   const [groups, setGroups] = useState([]);
   const [groups, setGroups] = useState(() => {
-      // Try to load groups from localStorage if available
-      const savedGroups = localStorage.getItem("groups");
-      return savedGroups ? JSON.parse(savedGroups) : []; // Return saved groups or an empty array
-    });
-    const [color, setColor] = useState("");
-    const [selectedGroup, setSelectedGroup] = useState(null);
-    
-//   useEffect(() => {
-//     const savedGroups = JSON.parse(localStorage.getItem("groups")) || [];
-//     setGroups(savedGroups);
-//   }, []);
+    const savedGroups = localStorage.getItem("groups");
+    return savedGroups ? JSON.parse(savedGroups) : [];
+  });
 
-  // Save data to localStorage whenever groups are updated
+  const [color, setColor] = useState("");
+
+  const [selectedGroup, setSelectedGroup] = useState(null);
+
   useEffect(() => {
     if (groups.length > 0) {
-      localStorage.setItem("groups", JSON.stringify(groups)); // Persist the groups
+      localStorage.setItem("groups", JSON.stringify(groups));
     }
   }, [groups]);
 
-  // get data from localStorage
   useEffect(() => {
     localStorage.getItem("groups", JSON.stringify(groups));
   }, [groups]);
+
+  useEffect(() => {
+    const handleStorageChange = (event) => {
+      if (event.key === "groups") {
+        const updatedGroups = JSON.parse(event.newValue);
+        setGroups(updatedGroups || []);
+      }
+    };
+
+    window.addEventListener("storage", handleStorageChange);
+
+    // Cleanup on unmount
+    return () => {
+      window.removeEventListener("storage", handleStorageChange);
+    };
+  }, []);
 
   const addGroup = (group) => {
     setGroups((prevGroups) => [...prevGroups, { ...group, notes: [] }]);
@@ -56,7 +65,6 @@ export const GroupProvider = ({ children }) => {
   };
 
   const chooseColor = (selectedColor) => {
-    console.log("Selected color:", selectedColor); // Log to confirm color selection
     setColor(selectedColor);
   };
 

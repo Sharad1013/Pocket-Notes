@@ -1,24 +1,34 @@
-// NotesContainer.jsx
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useGroup } from "../context/store";
-import "./styles/NotesContainer.css"; // Import CSS for styling
+import "./styles/NotesContainer.css";
 
 const NotesContainer = () => {
-  const { selectedGroup, addNoteToGroup, getNotesForGroup, color } = useGroup();
+  const {
+    selectedGroup,
+    addNoteToGroup,
+    getNotesForGroup,
+    color,
+    setSelectedGroup,
+  } = useGroup();
+
+
   const [noteContent, setNoteContent] = useState("");
 
-  // Handle note submission
+
   const handleAddNote = () => {
     if (selectedGroup && noteContent.trim() !== "") {
       addNoteToGroup(selectedGroup.name, noteContent);
-      setNoteContent(""); // Clear text area after adding note
+      setNoteContent(""); 
     }
   };
 
-  // Trigger note submission on Enter key press
+  const handleBackClick = () => {
+    setSelectedGroup(null);
+  };
+
   const handleKeyDown = (event) => {
     if (event.key === "Enter") {
-      event.preventDefault(); // Prevent newline in text area
+      event.preventDefault();
       handleAddNote();
     }
   };
@@ -26,15 +36,13 @@ const NotesContainer = () => {
   // Retrieve notes for the selected group
   const notes = selectedGroup ? getNotesForGroup(selectedGroup.name) : [];
 
-  //   const { color } = useGroup();
-
   const initials = selectedGroup?.name
     .split(" ")
+    .filter((_, index, arr) => index === 0 || index === arr.length - 1) 
     .map((word) => word[0])
     .join("")
     .toUpperCase();
 
-  //   console.log(color, );
   return (
     <div className="notes-container">
       {selectedGroup ? (
@@ -43,6 +51,9 @@ const NotesContainer = () => {
             className="notes-container-group-heading"
             style={{ backgroundColor: "#001F8B" }}
           >
+            <button className="back-button" onClick={handleBackClick}>
+              <img src="Back.png" alt="Back" />
+            </button>
             <div
               className="notes-container-group-logo"
               style={{ backgroundColor: selectedGroup?.color }}
@@ -73,11 +84,13 @@ const NotesContainer = () => {
                     year: "numeric",
                   })}{" "}
                   •{" "}
-                  {new Date(note.dateCreated).toLocaleTimeString("en-GB", {
-                    hour: "2-digit",
-                    minute: "2-digit",
-                    hour12: true,
-                  }).toUpperCase()}
+                  {new Date(note.dateCreated)
+                    .toLocaleTimeString("en-GB", {
+                      hour: "2-digit",
+                      minute: "2-digit",
+                      hour12: true,
+                    })
+                    .toUpperCase()}
                 </span>
               </div>
             ))}
@@ -93,7 +106,10 @@ const NotesContainer = () => {
             </div>
             <div className="add-note-btn">
               <button onClick={handleAddNote} disabled={!noteContent}>
-                <img src="Arrow.png" alt="" />
+                <img
+                  src={!noteContent ? "Arrow.png" : "ColoredArrow.png"}
+                  alt=""
+                />
               </button>
             </div>
           </div>

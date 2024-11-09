@@ -1,4 +1,3 @@
-// AddGroup.js
 import React, { useState, useEffect, useRef } from "react";
 import "./styles/AddGroup.css";
 import { useGroup } from "../context/store";
@@ -12,49 +11,21 @@ const colors = [
   "#6691FF",
 ];
 
-const arr = [" ONE", "TWO", "THREE", "FOUR"];
 const AddGroup = ({ onClose }) => {
   const [groupName, setGroupName] = useState("");
-  // const [color, setColor] = useState("");
-  const { addGroup, color, chooseColor } = useGroup(); // Access from context
-  const { groups } = useGroup();
+  const { addGroup, color, chooseColor } = useGroup();
 
   const NewGroupRef = useRef(null);
 
-  console.log(groups);
-
-  // const handleCreateGroup = () => {
-  //   // Implement group creation logic here
-  //   alert("Group created:", groupName, color);
-  //   console.log(arr);
-
-  //   if (groupName && color) {
-  //     addGroup({
-  //       name: groupName,
-  //       color: color,
-  //     });
-  //     setGroupName("");
-  //     setColor("");
-  //     onClose(); // Close the prompt after creating the group
-  //   }
-  // };
-
   const handleCreateGroup = () => {
     if (groupName && color) {
-      // addGroup({ name: groupName, color: color });
-      // setGroupName(""); // Clear input after adding group
-      // chooseColor(""); // Clear color selection
-      // if (onClose) onClose(); // Close the modal if a close function is provided
-      if (groupName && color) {
-        addGroup({ name: groupName, color });
-        setGroupName("");
-        chooseColor("");
-        onClose();
-      }
+      addGroup({ name: groupName, color });
+      setGroupName("");
+      chooseColor("");
+      onClose();
     }
   };
 
-  // Close the prompt when clicking outside
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (NewGroupRef.current && !NewGroupRef.current.contains(event.target)) {
@@ -67,7 +38,6 @@ const AddGroup = ({ onClose }) => {
     };
   }, [onClose, handleCreateGroup]);
 
-  // Helper function to generate a valid CSS class name from hex color
   const getColorClass = (hexColor) => {
     return `color-${hexColor.replace("#", "")}`;
   };
@@ -81,7 +51,7 @@ const AddGroup = ({ onClose }) => {
       >
         <h2>Create New Group</h2>
         <div className="color-container">
-          <div className="group-name">
+          <div className="add-group-name">
             <div>Group Name</div>
             <label>
               <input
@@ -93,7 +63,7 @@ const AddGroup = ({ onClose }) => {
             </label>
           </div>
           <div className="choose-color">
-            <div>Choose color</div>
+            <div>Choose colour</div>
             <label>
               <div className="color-options">
                 {colors?.map((clr) => (
