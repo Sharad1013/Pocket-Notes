@@ -79,7 +79,11 @@
   }
 }
 
+/* Mobile view adjustments */
 @media (max-width: 767px) {
+  .main-container .content {
+    display: none;
+  }
   .encryption {
     display: none;
   }

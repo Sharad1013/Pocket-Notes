@@ -8,7 +8,7 @@
   text-align: center;
   color: #000;
   height: 100%;
-  overflow: hidden;
+  overflow-y: auto;
 }
 
 .sidebar h1 {
@@ -25,10 +25,10 @@
   align-items: center;
   /* justify-content: space-between; */
   margin-top: 2rem;
-  overflow-y: auto;
-  flex-grow: 1; 
+  /* overflow-y: auto; */
+  flex-grow: 1;
   max-height: calc(100vh - 150px);
-  padding-bottom: 70px; 
+  padding-bottom: 70px;
 }
 
 .single-group {
@@ -103,10 +103,10 @@
 @media (max-width: 767px) {
   .sidebar {
     width: 100vw;
+    height: 100vh;
     left: 0;
     top: 0;
     max-height: 100vh;
-    overflow: hidden;
     padding: 20px;
     display: flex;
     flex-direction: column;
@@ -114,11 +114,10 @@
   .groups-list {
     flex-grow: 1;
     max-height: calc(100vh - 90px);
-    overflow-y: auto;
   }
 
   .add-button {
-    position: sticky;
+    position: fixed;
     left: 80%;
     align-self: center;
     margin-top: auto;

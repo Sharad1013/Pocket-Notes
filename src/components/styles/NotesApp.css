@@ -22,4 +22,8 @@
   }
 }
 
+/* Desktop view */
+.notes-app {
+  display: flex;
+}
 
