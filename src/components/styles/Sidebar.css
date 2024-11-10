@@ -23,12 +23,12 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   margin-top: 2rem;
   overflow-y: auto;
   flex-grow: 1; 
   max-height: calc(100vh - 150px);
-  padding-bottom: 70px; /* Prevents overlapping with the button */
+  padding-bottom: 70px; 
 }
 
 .single-group {
