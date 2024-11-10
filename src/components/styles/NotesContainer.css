@@ -216,17 +216,19 @@
   }
 
   .note-input-container {
-    height: 120px;
+    height: 130px;
     padding: 0rem;
   }
 
   .note-input-container textarea {
-    height: 5rem;
+    height: 102px;
     font-size: 1rem;
   }
   .add-note-btn button > img {
-    width: 25px;
-    height: 25px;
+    /* width: 25px; */
+    /* height: 25px; */
+    width: 21px;
+    height: 18px;
   }
   .note-card {
     font-size: 13px;
