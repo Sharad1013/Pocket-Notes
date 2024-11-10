@@ -103,7 +103,7 @@
   background-color: #6691ff;
 }
 
-.create-button{
+.create-button {
   background-color: #001f8b;
   color: white;
   position: relative;
@@ -173,5 +173,36 @@
     left: 20%;
     margin-top: 2px;
     font-size: 17px;
+  }
+}
+/* Mini View */
+@media (max-width: 320px) {
+  .prompt {
+    width: 284px;
+    height: 218px;
+    top: 238px;
+    left: 38px;
+    gap: 10px;
+    opacity: 0px;
+  }
+  .add-group-name {
+    font-family: Roboto;
+    font-size: 12.6px;
+    font-weight: 500;
+    line-height: 23.39px;
+    letter-spacing: 0.035em;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+  }
+  .add-group-name input {
+    width: 200px;
+  }
+  .choose-color > div {
+    width: 20px;
+    font-size: 14px;
+  }
+  .color-options {
+    gap: 4px;
   }
 }
